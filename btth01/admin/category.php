@@ -46,26 +46,40 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <h3 class="text-center text-uppercase fw-bold">Sửa tác giả</h3>
-                <form action="process_add_author.php" method="post">
-                <div class="input-group mt-3 mb-3" hidden>
-                        <span class="input-group-text" id="lblCatName">Mã tác giả</span>
-                        <input readonly type="text" class="form-control" name="ma" values="$_POST['id']" >
-                    </div>
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="ten" >
-                    </div>
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatName">Hình tác giả</span>
-                        <input type="file" class="form-control" name="hinh" >
-                    </div>
-
-                    <div class="form-group  float-end ">
-                        <input type="submit" value="Thêm" class="btn btn-success">
-                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
-                    </div>
-                </form>
+                <a href="add_category.php" class="btn btn-success">Thêm mới</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tên thể loại</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Nhạc trữ tình</td>
+                            <td>
+                                <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                            <td>
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Nhạc cách mạng</td>
+                            <td>
+                                <a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                            <td>
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
