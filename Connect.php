@@ -1,14 +1,13 @@
 <?php 
-    $severname ="localhost";
+    $host ="localhost";
     $username = "root";
     $password = "";
     $database = "btth01_cse485";
 
-    $conn = mysqli_connect($severname,$username,$password,$database);
-    if(!$conn){
-        echo ("kết nối thất bại");
+    $conn =new mysqli($host,$username,$password,$database);
+
+    if($conn -> connect_errno){
+        die("Kết nối không thành công:".$conn->connect_errno);
     }
-    else{
-        echo("kết nối thành công");
-    }
+    
 ?>
