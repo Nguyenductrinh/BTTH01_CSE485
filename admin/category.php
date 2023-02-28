@@ -52,8 +52,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên thể loại</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
+                            <th scope="col">Sửa</th>
+                            <th scope="col">Xóa</th>
                         </tr>
                     </thead>
                     <tbody>

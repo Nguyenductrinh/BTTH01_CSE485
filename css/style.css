@@ -6,7 +6,9 @@ body{
 .bg-body-tertiary{
     background-color:#fff !important;
 }
-
+.btn btn-outline-success{
+    margin-right: auto;
+}
 .my-logo{
     max-width: 20%;
 }

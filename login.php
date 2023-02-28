@@ -31,10 +31,6 @@
                     <a class="nav-link active" href="./login.php">Đăng nhập</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Nội dung cần tìm" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
-                </form>
                 </div>
             </div>
         </nav>
@@ -74,7 +70,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center ">
-                            Don't have an account?<a href="SignUp.phpF" class="text-warning text-decoration-none">Sign Up</a>
+                            Don't have an account?<a href="SignUp.php" class="text-warning text-decoration-none">Sign Up</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <a href="#" class="text-warning text-decoration-none">Forgot your password?</a>

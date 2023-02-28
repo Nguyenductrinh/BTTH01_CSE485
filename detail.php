@@ -25,9 +25,6 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./">Trang chủ</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="./login.php">Đăng nhập</a>
-                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Nội dung cần tìm" aria-label="Search">
@@ -42,6 +39,7 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
        
                 <div class="row mb-5">
+                    <h1>Thông tin bài viết</h1>
                     <div class="col-sm-4">
                         <img src="images/songs/cayvagio.jpg" class="img-fluid" alt="...">
                     </div>
