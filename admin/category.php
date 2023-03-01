@@ -1,6 +1,4 @@
-<?php
-require './session_login.php';
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
