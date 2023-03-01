@@ -2,7 +2,7 @@
 $con = mysqli_connect('localhost','root','','btth01_cse485' );
 
 if (isset($_GET['id'])) {
-    $ma_tloai = intval($_GET['id']);
+    echo $ma_tloai = intval($_GET['id']);
 } else {
     header('Location: category.php');
     exit();
