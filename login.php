@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +31,6 @@
                     <a class="nav-link active" href="./login.php">Đăng nhập</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Nội dung cần tìm" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
-                </form>
                 </div>
             </div>
         </nav>
@@ -52,28 +49,28 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="lg.php" method="post">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="username" >
+                                <input type="text" name="ten_dnhap" class="form-control" id="username" placeholder="Username" >
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
-                                <input type="text" class="form-control" placeholder="password" >
+                                <input type="text" name="mat_khau" class="form-control" id="password" placeholder="Password">
                             </div>
                             
                             <div class="row align-items-center remember">
                                 <input type="checkbox">Remember Me
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn float-end login_btn">
+                                <input type="submit" name ="btn-lg" class="btn float-end login_btn">
                             </div>
                         </form>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center ">
-                            Don't have an account?<a href="#" class="text-warning text-decoration-none">Sign Up</a>
+                            Don't have an account?<a href="SignUp.php" class="text-warning text-decoration-none">Sign Up</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <a href="#" class="text-warning text-decoration-none">Forgot your password?</a>

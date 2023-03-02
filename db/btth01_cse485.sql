@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 25, 2023 lúc 04:25 PM
+-- Thời gian đã tạo: Th2 27, 2023 lúc 05:10 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -35,9 +35,9 @@ CREATE TABLE `baiviet` (
   `tomtat` text NOT NULL,
   `noidung` text DEFAULT NULL,
   `ma_tgia` int(10) UNSIGNED NOT NULL,
-  `ngayviet` datetime NOT NULL DEFAULT current_timestamp(),
+  `ngayviet` datetime NOT NULL,
   `hinhanh` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `baiviet`
@@ -68,7 +68,7 @@ CREATE TABLE `tacgia` (
   `ma_tgia` int(10) UNSIGNED NOT NULL,
   `ten_tgia` varchar(100) NOT NULL,
   `hinh_tgia` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tacgia`
@@ -93,7 +93,7 @@ INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
 CREATE TABLE `theloai` (
   `ma_tloai` int(10) UNSIGNED NOT NULL,
   `ten_tloai` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `theloai`
@@ -108,6 +108,26 @@ INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
 (6, 'POP'),
 (7, 'Rock'),
 (8, 'R&B');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `user`
+--
+
+CREATE TABLE `user` (
+  `ten_dnhap` varchar(50) NOT NULL,
+  `mat_khau` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`ten_dnhap`, `mat_khau`) VALUES
+('trinh', '123'),
+('trung', '123'),
+('hung', '123');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -132,28 +152,6 @@ ALTER TABLE `tacgia`
 --
 ALTER TABLE `theloai`
   ADD PRIMARY KEY (`ma_tloai`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `baiviet`
---
-ALTER TABLE `baiviet`
-  MODIFY `ma_bviet` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `tacgia`
---
-ALTER TABLE `tacgia`
-  MODIFY `ma_tgia` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT cho bảng `theloai`
---
-ALTER TABLE `theloai`
-  MODIFY `ma_tloai` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
