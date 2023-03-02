@@ -27,9 +27,6 @@
                             <a class="nav-link active fw-bold" aria-current="page" href="./">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Trang ngoài</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="category.php">Thể loại</a>
                         </li>
                         <li class="nav-item">
@@ -38,9 +35,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="article.php">Bài viết</a>
                         </li>
-                        
-                        <a class="btn btn-outline-success" href="../login.php">Log Out</a>
-                       
+
+                        <li class="nav-item" style="position:absolute; right:10px;">
+                            <a href="logout.php" class="nav-link">Logout</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,6 +47,23 @@
     </header>
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+        <?php
+        $conn = mysqli_connect('localhost', 'root', '', 'btth01_cse485');
+        if (!$conn) {
+            die('Lỗi! Không kết nối được tới Server');
+        }
+        ?>
+
+        <?php
+        function getCount(string $table)
+        {
+            global $conn;
+            $sql = "SELECT COUNT(*) AS so_luong FROM " . $table;
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            return $row['so_luong'];
+        }
+        ?>
         <div class="row">
             <div class="col-sm-3">
                 <div class="card mb-2" style="width: 100%;">
@@ -58,7 +73,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                            <?= getCount("user") ?>
                         </h5>
                     </div>
                 </div>
@@ -72,7 +87,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            10
+                            <?= getCount("theloai") ?>
                         </h5>
                     </div>
                 </div>
@@ -86,7 +101,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            20
+                            <?= getCount("tacgia") ?>
                         </h5>
                     </div>
                 </div>
@@ -100,7 +115,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                            <?= getCount("baiviet") ?>
                         </h5>
                     </div>
                 </div>
