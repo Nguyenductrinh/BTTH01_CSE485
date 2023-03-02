@@ -1,3 +1,16 @@
+
+
+<?php
+$dtb = 'btth01_cse485';
+$conn = mysqli_connect('localhost', 'root', '', $dtb);
+if (!$conn) {
+    die('Lỗi! Không kết nối được tới Server');
+}
+
+$sql = "SELECT bv.*, tg.ten_tgia, tl.ten_tloai FROM baiviet AS bv, theloai AS tl, tacgia AS tg WHERE ma_bviet = '$id' AND bv.ma_tgia = tg.ma_tgia AND bv.ma_tloai = tl.ma_tloai";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,23 +50,23 @@
     </header>
     <main class="container mt-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
-       
-                <div class="row mb-5">
-                    <h1>Thông tin bài viết</h1>
-                    <div class="col-sm-4">
-                        <img src="images/songs/cayvagio.jpg" class="img-fluid" alt="...">
-                    </div>
-                    <div class="col-sm-8">
-                        <h5 class="card-title mb-2">
-                            <a href="" class="text-decoration-none">Cây và gió</a>
-                        </h5>
-                        <p class="card-text"><span class=" fw-bold">Bài hát: </span>Cây và gió</p>
-                        <p class="card-text"><span class=" fw-bold">Thể loại: </span>Nhạc trữ tình</p>
-                        <p class="card-text"><span class=" fw-bold">Tóm tắt: </span>Em và anh, hai đứa quen nhau thật tình cờ. Lời hát của anh từ bài hát “Cây và gió” đã làm tâm hồn em xao động. Nhưng sự thật phũ phàng rằng em chưa bao giờ nói cho anh biết những suy nghĩ tận sâu trong tim mình. Bởi vì em nhút nhát, em không dám đối mặt với thực tế khắc nghiệt, hay thực ra em không dám đối diện với chính mình.</p>
-                        <p class="card-text"><span class=" fw-bold">Nội dung: </span>Em và anh, hai đứa quen nhau thật tình cờ. Lời hát của anh từ bài hát “Cây và gió” đã làm tâm hồn em xao động. Nhưng sự thật phũ phàng rằng em chưa bao giờ nói cho anh biết những suy nghĩ tận sâu trong tim mình. Bởi vì em nhút nhát, em không dám đối mặt với thực tế khắc nghiệt, hay thực ra em không dám đối diện với chính mình.</p>
-                        <p class="card-text"><span class=" fw-bold">Tác giả: </span>Nguyễn Văn Giả</p>
 
-                    </div>          
+        <div class="row mb-5">
+            <div class="col-sm-4">
+                <!-- link hinh anh tu database-->
+                <img src="./images/songs/<?= $row['hinhanh'] ?>" class="img-fluid" alt="...">
+            </div>
+            <div class="col-sm-8">
+                <h5 class="card-title mb-2">
+                    <a href="" class="text-decoration-none"><?= $row['tieude'] ?></a>
+                </h5>
+                <p class="card-text"><span class=" fw-bold">Bài hát: </span><?= $row['ten_bhat'] ?></p>
+                <p class="card-text"><span class=" fw-bold">Thể loại: </span><?= $row['ten_tloai'] ?></p>
+                <p class="card-text"><span class=" fw-bold">Tóm tắt: </span><?= $row['tomtat'] ?></p>
+                <p class="card-text"><span class=" fw-bold">Nội dung: </span><?= $row['noidung'] ?></p>
+                <p class="card-text"><span class=" fw-bold">Tác giả: </span><?= $row['ten_tgia'] ?></p>
+
+            </div>
         </div>
     </main>
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
