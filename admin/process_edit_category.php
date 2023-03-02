@@ -20,9 +20,9 @@
 
     if ($result) {
         echo "<script>alert('Sửa bài viết thành công!');</script>";
-        echo "<script>window.location = 'article.php'</script>";
+         echo " <script>window.location = 'category.php'</script> ";
     } else {
         echo "<script>alert('Sửa bài viết thất bại!');</script>";
-        echo "<script>window.location = 'edit_article.php?id=" . $matloai . "'</script>";
+        echo " <script>window.location = 'category.php'</script>";
 }
 ?>
