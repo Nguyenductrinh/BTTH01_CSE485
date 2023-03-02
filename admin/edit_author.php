@@ -1,3 +1,22 @@
+<?php
+$servername = 'localhost';
+$database = 'btth01_cse485';
+$charset = 'utf8mb4';
+$port = '';
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$database;port=3306", 'root','');
+} catch (PDOException $e) {
+    throw new PDOException($e->getMessage(), $e->getCode());
+}
+$id = $_GET["id"];
+
+
+$sql = "SELECT * FROM tacgia WHERE ma_tgia = $id";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +29,7 @@
     <link rel="stylesheet" href="css/style_login.css">
 </head>
 <body>
-<header>
+    <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary shadow p-3 bg-white rounded">
             <div class="container-fluid">
                 <div class="h3">
@@ -28,13 +47,13 @@
                         <a class="nav-link" href="../index.php">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Thể loại</a>
+                        <a class="nav-link " href="category.php">Thể loại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="article.php">Bài viết</a>
+                        <a class="nav-link" href="article.php">Bài viết</a>
                     </li>
                 </ul>
                 </div>
@@ -42,58 +61,39 @@
         </nav>
 
     </header>
-    <?php
-        $servername = 'localhost';
-        $database = 'btth01_cse485';
-        $charset = 'utf8mb4';
-        $port = '';
-
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$database;port=3306", 'root','');
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), $e->getCode());
-        }
-        if(isset($_GET["id"])){
-            $id = $_GET["id"];
-         }
-         
-        $sql = "SELECT * from tacgia";
-        $stmt = $conn->query($sql);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    ?>
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên tác giả</th>
-                            <th scope="col">Hình ảnh</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($results as $key => $value) { ?>
-                        <tr>
-                            <td><?php echo $value['ma_tgia'] ?></td>
-                            <td><?php echo $value['ten_tgia'] ?></td>
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
+                <form action="process_edit_author.php" method="post">
+                <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã tác giả</span>
+                        <input type="text" class="form-control" name="txtCatId" readonly value="<?php echo $row['ma_tgia']?>">
+                    </div>
 
-                            <td><img src="<?php echo $value['hinh_tgia'] ?>" alt=""></td>
-                            <td><a href="edit_author.php?id=<?php echo $value['ma_tgia'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="delete_author.php?id=<?php echo $value['ma_tgia'] ?>"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
-                        <?php } ?>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tên tác giả</span>
+                        <input type="text" class="form-control" name="txtCatName" value = "<?php echo $row['ten_tgia']?> ">
+                    </div>
 
-                    </tbody>
-                </table>
+
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Hình ảnh</span>
+                        <input type="text" class="form-control" name="hinhanh" value = "<?php echo $row['hinh_tgia']?>">
+                    </div>
+
+                    <div class="form-group  float-end ">
+                        <input type="submit" value="Lưu lại" class="btn btn-success">
+                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
-
+    <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
+        <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
