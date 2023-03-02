@@ -11,15 +11,15 @@
             $id = $_GET["id"];
          }
     
-         $stmt = $conn->prepare("DELETE FROM baiviet where ma_bviet = :id");
+         $stmt = $conn->prepare("DELETE FROM tacgia where ma_tgia = :id");
          $stmt->bindParam(':id', $id);
          $stmt->execute();
          
          echo "<script>alert('Thêm dữ liệu thành công!')</script>";
-         header("Location: article.php");
+         header("Location: author.php");
          
      } catch (PDOException $e) {
-         throw new PDOException($e->getMessage(), $e->getCode());
+         throw new PDOException($e->getMessage(), $e->getCode());  
      }
  
 ?>
